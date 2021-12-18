@@ -1,12 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApexLoadout.Weapons
 {
 	class Marksman
 	{
+		static string[] weapons = { "TakeTakeTake", "30-30", "Bocsek" };
+
+		public string GetWeapon(int index)
+		{
+			return weapons[index];
+		}
+
+		public Marksman()
+		{
+
+		}
 	}
 }
