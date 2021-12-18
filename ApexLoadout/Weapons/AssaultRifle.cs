@@ -13,5 +13,10 @@ namespace ApexLoadout.Weapons
 		{
 			return weapons[index];
 		}
+
+		public AssaultRifle()
+		{
+
+		}
 	}
 }
