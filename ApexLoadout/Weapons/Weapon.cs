@@ -8,6 +8,7 @@ namespace ApexLoadout.Weapons
 	class Weapon
 	{
 		const float probability = 1.0f / 7.0f;
+
 		public Weapon()
 		{
 			

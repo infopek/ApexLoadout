@@ -2,7 +2,7 @@
 
 namespace ApexLoadout.Weapons
 {
-	class Sniper
+	class Sniper : Weapon
 	{
 		static string[] weapons = { "Sentinel", "Charge Rifle", "Longbow" };
 

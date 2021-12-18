@@ -2,7 +2,7 @@
 
 namespace ApexLoadout.Weapons
 {
-	class CarePackage
+	class CarePackage : Weapon 
 	{
 		static string[] weapons = { "Alti", "Scut", "Spitticus", "Krab" };
 
