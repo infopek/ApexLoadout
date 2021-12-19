@@ -4,11 +4,12 @@ namespace ApexLoadout.Weapons
 {
 	class CarePackage : Weapon 
 	{
-		static string[] weapons = { "Alti", "Scut", "Spitticus", "Krab" };
+		static Random rand = new Random();
+		string[] weapons = { "Alti", "Scut", "Spitticus", "Krab" };
 
-		public string GetWeapon(int index)
+		public string GetRandomWeapon()
 		{
-			return weapons[index];
+			return weapons[rand.Next(0, this.weapons.Length)];
 		}
 
 		public CarePackage()

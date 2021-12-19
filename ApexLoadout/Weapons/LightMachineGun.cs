@@ -4,11 +4,12 @@ namespace ApexLoadout.Weapons
 {
 	class LightMachineGun : Weapon
 	{
-		static string[] weapons = { "Devo", "W-Star", "Page" };
+		static Random rand = new Random();
+		string[] weapons = { "Devo", "W-Star", "Page" };
 
-		public string GetWeapon(int index)
+		public string GetRandomWeapon()
 		{
-			return weapons[index];
+			return weapons[rand.Next(0, this.weapons.Length)];
 		}
 
 		public LightMachineGun()
