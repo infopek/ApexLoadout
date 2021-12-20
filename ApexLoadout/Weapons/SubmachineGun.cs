@@ -2,11 +2,11 @@
 
 namespace ApexLoadout.Weapons
 {
-	class SubmachineGun : Weapon
+	class SubmachineGun
 	{
-		string[] weapons = { "Prowler", "R-9", "Vilt", "Car" };
+		Weapon[] weapons = { new Weapon("Prowler"), new Weapon("R-9"), new Weapon("Vilt"), new Weapon("Car") };
 
-		public string GetRandomWeapon(Random rand)
+		public Weapon GetRandomWeapon(Random rand)
 		{
 			return weapons[rand.Next(0, this.weapons.Length)];
 		}

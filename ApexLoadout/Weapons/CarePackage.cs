@@ -2,10 +2,10 @@
 
 namespace ApexLoadout.Weapons
 {
-	class CarePackage : Weapon 
+	class CarePackage
 	{
-		float probability = 0.35f;	// by default
-		string[] weapons = { "Alti", "Scut", "Spitticus", "Krab" };
+		float probability = 0.35f;  // by default
+		Weapon[] weapons = { new Weapon("Alti"), new Weapon("Scut"), new Weapon("Spitticus"), new Weapon("Krab") };
 
 		public float Probability 
 		{
@@ -23,7 +23,7 @@ namespace ApexLoadout.Weapons
 			}
 		}
 
-		public string GetRandomWeapon(Random rand)
+		public Weapon GetRandomWeapon(Random rand)
 		{
 			return weapons[rand.Next(0, this.weapons.Length)];
 		}
@@ -31,10 +31,10 @@ namespace ApexLoadout.Weapons
 		/// <summary>
 		/// Determines which care package weapons are allowed for that round
 		/// </summary>
-		/// <returns>String array containing the allowed weapons</returns>
-		public string[] Allowed(Random rand)
+		/// <returns>Weapon array containing the allowed weapons</returns>
+		public Weapon[] Allowed(Random rand)
 		{
-			string[] allowedWeapons = new string[this.weapons.Length];
+			Weapon[] allowedWeapons = new Weapon[this.weapons.Length];
 			for (int i = 0; i < allowedWeapons.Length; i++)
 			{
 				if (this.probability <= (rand.Next() / int.MaxValue))
