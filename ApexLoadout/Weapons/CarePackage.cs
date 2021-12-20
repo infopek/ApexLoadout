@@ -4,7 +4,7 @@ namespace ApexLoadout.Weapons
 {
 	class CarePackage : Weapon 
 	{
-		float probability = 0.35f;
+		float probability = 0.35f;	// by default
 		string[] weapons = { "Alti", "Scut", "Spitticus", "Krab" };
 
 		public float Probability 
