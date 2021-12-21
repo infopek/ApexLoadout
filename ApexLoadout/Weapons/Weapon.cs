@@ -42,18 +42,24 @@ namespace ApexLoadout.Weapons
 
 			set
 			{
-				if (this.category == 0 && (value >= 0.00f && value <= 1.00f))
+				if (this.category == 0 && value >= 0.00f && value <= 1.00f)
 				{
 					this.probability = value;
 				}
 			}
 		}
-
+	
+		// Constructor
 		public Weapon(string name, int category)
 		{
 			this.name = name;
 			this.category = (Category)category;
-			probability = 0.50f;
+
+			// Default value
+			if (category == 0)
+			{
+				this.probability = 0.50f;
+			}
 		}
 	}
 }
