@@ -7,6 +7,19 @@ namespace ApexLoadout
 	{
 		static Random rand = new();
 
+		static Weapon GetRandomWeapon(Weapon[,] weapons)
+		{
+			int category = rand.Next(1, weapons.GetLength(0));
+			int index = rand.Next(0, weapons.GetLength(1));
+
+			while (weapons[category, index] != null)
+			{
+				index = rand.Next(0, weapons.GetLength(1));
+			}
+
+			return weapons[category, index];
+		}
+
 		static void Main(string[] args)
 		{
 			Weapon[,] weapons =
@@ -20,6 +33,18 @@ namespace ApexLoadout
 				{ new Weapon("EVA", 6), new Weapon("Stiffy", 6), new Weapon("Bique", 6), new Weapon("PK", 6) },
 				{ new Weapon("REE", 7), new Weapon("P20", 7), new Weapon("Wingdud", 7), null }
 			};
+
+			Weapon slotOne = GetRandomWeapon(weapons);
+			Weapon slotTwo = GetRandomWeapon(weapons);
+
+			// Weapons should be of different category!
+			while (slotTwo.Category == slotOne.Category)
+			{
+				slotTwo = GetRandomWeapon(weapons);
+			}
+
+
+
 		}
 	}
 }
