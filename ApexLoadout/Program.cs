@@ -10,8 +10,6 @@ namespace ApexLoadout
 		static void Main(string[] args)
 		{
 			// Next 10 rounds
-			
-
 			for (int i = 0; i < 10; i++)
 			{
 				int firstType = rand.Next(0, 7);
