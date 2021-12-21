@@ -7,13 +7,14 @@ namespace ApexLoadout.Weapons
 	/// </summary>
 	enum Category
 	{
+		CarePackage = 0,
 		AssaultRifle = 1,
 		SubmachineGun = 2,
 		LightMachineGun = 3,
 		Marksman = 4,
 		Sniper = 5,
 		Shotgun = 6,
-		Pistol = 7
+		Pistol = 7,
 	}
 
 	/// <summary>
@@ -23,14 +24,36 @@ namespace ApexLoadout.Weapons
 	{
 		string name;
 		Category category;
+		float probability;	// only for carepac weapons
 		
 		public string Name { get => name; set => name = value; }
 		public Category Category { get => category; set => category = value; }
+		public float Probability	// only for carepac weapons
+		{
+			get
+			{
+				if (this.category == 0)
+				{
+					return this.probability;
+				}
+
+				return 1.00f;
+			}
+
+			set
+			{
+				if (this.category == 0 && (value >= 0.00f && value <= 1.00f))
+				{
+					this.probability = value;
+				}
+			}
+		}
 
 		public Weapon(string name, int category)
 		{
 			this.name = name;
 			this.category = (Category)category;
+			probability = 0.50f;
 		}
 	}
 }
