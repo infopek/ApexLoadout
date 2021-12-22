@@ -39,7 +39,7 @@ namespace ApexLoadout
 			int numRounds = 100;
 			List<string> rounds = new();
 
-			for (int i = 1; i < numRounds; i++)
+			for (int i = 1; i < numRounds + 1; i++)
 			{
 				Weapon slotOne = GetRandomWeapon(weapons);
 				Weapon slotTwo = GetRandomWeapon(weapons);
