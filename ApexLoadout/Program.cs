@@ -1,5 +1,7 @@
 ﻿using System;
 using ApexLoadout.Weapons;
+using System.IO;
+using System.Collections.Generic;
 
 namespace ApexLoadout
 {
@@ -12,7 +14,7 @@ namespace ApexLoadout
 			int category = rand.Next(1, weapons.GetLength(0));
 			int index = rand.Next(0, weapons.GetLength(1));
 
-			while (weapons[category, index] != null)
+			while (weapons[category, index] == null)
 			{
 				index = rand.Next(0, weapons.GetLength(1));
 			}
@@ -34,17 +36,36 @@ namespace ApexLoadout
 				{ new Weapon("REE", 7), new Weapon("P20", 7), new Weapon("Wingdud", 7), null }
 			};
 
-			Weapon slotOne = GetRandomWeapon(weapons);
-			Weapon slotTwo = GetRandomWeapon(weapons);
+			int numRounds = 100;
+			List<string> rounds = new();
 
-			// Weapons should be of different category!
-			while (slotTwo.Category == slotOne.Category)
+			for (int i = 1; i < numRounds; i++)
 			{
-				slotTwo = GetRandomWeapon(weapons);
+				Weapon slotOne = GetRandomWeapon(weapons);
+				Weapon slotTwo = GetRandomWeapon(weapons);
+
+				// Weapons should be of different category!
+				while (slotTwo.Category == slotOne.Category)
+				{
+					slotTwo = GetRandomWeapon(weapons);
+				}
+
+				string allowedCP = "";
+				for (int j = 0; j < weapons.GetLength(1); j++)
+				{
+					if (weapons[0, j].Probability < ((float)rand.Next() / int.MaxValue))
+					{
+						allowedCP += $" {weapons[0, j].Name},";
+					}
+				}
+
+				rounds.Add($"{i}. ROUND");
+				rounds.Add($"Weapons: {slotOne.Name}, {slotTwo.Name}");
+				rounds.Add($"Care Package:{allowedCP}");
+				rounds.Add("\n");
 			}
 
-
-
+			File.WriteAllLines("apex_loadout.txt", rounds);
 		}
 	}
 }
